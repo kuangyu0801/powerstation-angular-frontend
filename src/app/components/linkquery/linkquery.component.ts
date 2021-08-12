@@ -29,9 +29,9 @@ export class LinkqueryComponent implements OnInit {
     
     // setting LinkQuery
     let linkQuery = new LinkQuery();
-    linkQuery.x = this.linkQueryFormGroup.get('linkQuery')?.value.x;
-    linkQuery.y = this.linkQueryFormGroup.get('linkQuery')?.value.y;    
-    
+    linkQuery.x = this.linkQueryFormGroup.get('linkQueryForm')?.value.x;
+    linkQuery.y = this.linkQueryFormGroup.get('linkQueryForm')?.value.y;    
+    console.log(linkQuery);
     // call REST API via LinkQueryService
     this.linkQueryService.query(linkQuery).subscribe(
       {
