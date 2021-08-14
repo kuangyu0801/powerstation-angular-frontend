@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { LinkQuery } from 'src/app/common/link-query';
 import { LinkQueryService } from 'src/app/services/link-query.service';
-
+import { LinkQueryResponse } from 'src/app/common/link-query-response';
 @Component({
   selector: 'app-linkquery',
   templateUrl: './linkquery.component.html',
@@ -10,7 +10,8 @@ import { LinkQueryService } from 'src/app/services/link-query.service';
 })
 export class LinkqueryComponent implements OnInit {
   linkQueryFormGroup!: FormGroup;
-  
+  response!: LinkQueryResponse;
+
   constructor(private formBuilder: FormBuilder,
     private linkQueryService: LinkQueryService) { }
 
@@ -34,15 +35,17 @@ export class LinkqueryComponent implements OnInit {
     console.log(linkQuery);
     // call REST API via LinkQueryService
     this.linkQueryService.query(linkQuery).subscribe(
-      {
-        next: reponse => {
-          alert(`Link Query has been received`);
-          console.log(reponse.body);
-          //this.resetForm();          
-        },
-        error: err => {
-          alert(`There was an error: ${err.message}`);
+      res => {
+        console.log(res)
+        this.response = res;
+        console.log(this.response);
+        if (this.response.isLinkFound) {
+          alert(`Best link station for point (${this.response.xquery}, ${this.response.yquery})
+          is (${this.response.xstation}, ${this.response.ystation}) with power ${this.response.power}`);
+        } else {
+          alert(`No link station within reach for point (${this.response.xquery}, ${this.response.yquery})`);
         }
+        
       }
     );
   }
