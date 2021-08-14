@@ -1,5 +1,9 @@
 # PowerstationAngularFrontend
 
+# Docker command
+docker build -t kuangyu0801/powerstation-angular-frontend:latest .
+docker run -d -p 4200:80 kuangyu0801/powerstation-angular-frontend
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.3.
 
 ## Development server
