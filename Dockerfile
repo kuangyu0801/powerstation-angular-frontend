@@ -26,3 +26,7 @@ COPY --from=build /usr/local/app/dist/powerstation-angular-frontend /usr/share/n
 
 # Expose port 80
 EXPOSE 80
+
+
+# docker build -t kuangyu0801/powerstation-angular-frontend:latest .
+# docker run -d -p 4200:80 kuangyu0801/powerstation-angular-frontend
