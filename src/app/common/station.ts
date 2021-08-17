@@ -3,4 +3,9 @@ export class Station {
     x!: number;
     y!: number;
     reach!: number;
+    _links!: {
+        self: {
+            href: string;
+        };
+    };
 }

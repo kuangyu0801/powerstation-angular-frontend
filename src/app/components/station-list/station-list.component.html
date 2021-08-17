@@ -1,17 +1,29 @@
-<p>station-list works!</p>
-<table class="table table-striped" width=100%>
-    <thead>
-        <tr>
-            <th>x</th>
-            <th>y</th>
-            <th>reach</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let station of stations">
-            <td>{{station.x}}</td>
-            <td>{{station.y}} </td>
-            <td>{{station.reach}}</td>
-        </tr>
-    </tbody> 
-</table>
+<h2>Stations</h2>
+<div class="main-content page-m">
+    <div class="container-fluid">
+        <button class="btn btn-info">Add new stations</button>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>x</th>
+                    <th>y</th>
+                    <th>reach</th>
+                    <th>link</th>
+                    <th>action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let station of stations">
+                    <td>{{station.x}}</td>
+                    <td>{{station.y}} </td>
+                    <td>{{station.reach}}</td>
+                    <td><a href={{station._links.self.href}}>Link</a></td>
+                    <td>
+                        <button class="btn btn-info">Update</button>
+                        <button class="btn btn-info">Delete</button>
+                    </td>
+                </tr>
+            </tbody> 
+        </table>
+    </div>
+</div>

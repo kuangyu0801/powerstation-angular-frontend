@@ -1,15 +1,22 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-    <h1>Link Station Query Application</h1>
-    <h2>Query</h2>
-    <div>
-      <app-linkquery></app-linkquery>
+<h1>Link Station Query Application</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <ul class="nav nav-tabs">
+        <li role="presentation" routerLinkActive="active"><a routerLink="/" >Home</a></li>
+        <li role="presentation" routerLinkActive="active"><a routerLink="/query" >Link Query</a></li>
+        <li role="presentation" routerLinkActive="active"><a routerLink="/stations" >Station List</a></li>
+      </ul>
     </div>
-    <h2>Stations</h2>
-      <app-station-list></app-station-list>
-  </body>
-</html>
+  </div>
+  <div class="row">
+    <router-outlet></router-outlet>
+  </div>
+  
+</div>
+
+  <!-- MENU SIDEBAR-->
+  <!-- END MENU SIDEBAR-->
+
+    
+
