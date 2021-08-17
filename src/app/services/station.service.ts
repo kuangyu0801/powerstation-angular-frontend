@@ -17,6 +17,10 @@ export class StationService {
       map(response => response._embedded.stations)
     )
   }
+
+  postStation(newStation : Station): Observable<Station> {
+    return this.httpClient.post<Station>(this.baseUrl, newStation);
+  }
 }
 
 interface GetResponse {

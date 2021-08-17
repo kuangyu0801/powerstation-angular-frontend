@@ -1,7 +1,6 @@
 <h2>Stations</h2>
 <div class="main-content page-m">
     <div class="container-fluid">
-        <button class="btn btn-info">Add new stations</button>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -25,5 +24,30 @@
                 </tr>
             </tbody> 
         </table>
+    </div>
+    <div class="container-fluid">
+        <form [formGroup]="stationFormGroup" (ngSubmit)="onSubmit()">
+            <div formGroupName="addStationForm" class="form-area">
+                <div class="row">
+                    <div class="col-md-2"><label>x</label></div>
+                    <div class="col-md-9">
+                        <input formControlName="x" type="number">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"><label>y</label></div>
+                    <div class="col-md-9">
+                        <input formControlName="y" type="number">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"><label>reach</label></div>
+                    <div class="col-md-9">
+                        <input formControlName="reach" type="number">
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-info">Add new stations</button>
+        </form>
     </div>
 </div>
