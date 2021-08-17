@@ -11,6 +11,7 @@ import { LinkQueryResponse } from 'src/app/common/link-query-response';
 export class LinkqueryComponent implements OnInit {
   linkQueryFormGroup!: FormGroup;
   response!: LinkQueryResponse;
+  message : string = "No Query";
 
   constructor(private formBuilder: FormBuilder,
     private linkQueryService: LinkQueryService) { }
@@ -40,10 +41,10 @@ export class LinkqueryComponent implements OnInit {
         this.response = res;
         console.log(this.response);
         if (this.response.isLinkFound) {
-          alert(`Best link station for point (${this.response.xquery}, ${this.response.yquery})
-          is (${this.response.xstation}, ${this.response.ystation}) with power ${this.response.power}`);
+          this.message = `Best link station for point (${this.response.xquery}, ${this.response.yquery})
+          is (${this.response.xstation}, ${this.response.ystation}) with power ${this.response.power}`;
         } else {
-          alert(`No link station within reach for point (${this.response.xquery}, ${this.response.yquery})`);
+          this.message = `No link station within reach for point (${this.response.xquery}, ${this.response.yquery})`;
         }
         
       }
