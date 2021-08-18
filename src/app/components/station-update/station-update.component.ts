@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Station } from 'src/app/common/station';
 import { StationService } from 'src/app/services/station.service';
-
+import { StationListComponent } from '../station-list/station-list.component';
 @Component({
   selector: 'app-station-update',
   templateUrl: './station-update.component.html',
@@ -16,7 +16,8 @@ export class StationUpdateComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private stationService: StationService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              /*private list: StationListComponent*/) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.queryParams.id;
@@ -41,6 +42,7 @@ export class StationUpdateComponent implements OnInit {
         alert(`Station ${this.id} has been successfully updated!`);
       }
     );
-    this.router.navigate(['/stations']);
+    //this.router.navigate(['/stations']);
+    this.router.navigateByUrl('/stations');
   }
 }

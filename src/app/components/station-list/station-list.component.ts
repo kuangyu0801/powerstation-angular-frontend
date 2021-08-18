@@ -20,17 +20,21 @@ export class StationListComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute) { }
 
-  ngOnInit(): void {
-    // subscribe to data async
-    this.stationService.getStationList().subscribe(
-      data => {
-        this.stations = data;
-        // preprocessing to get id from links
-        for (let station of this.stations) {
-            station.id = +station._links.self.href.substring(this.baseUrl.length + 1);
+  reloadList(): void {
+      // subscribe to data async
+      this.stationService.getStationList().subscribe(
+        data => {
+          this.stations = data;
+          // preprocessing to get id from links
+          for (let station of this.stations) {
+              station.id = +station._links.self.href.substring(this.baseUrl.length + 1);
+          }
         }
-      }
-    )
+      );
+  }
+
+  ngOnInit(): void {
+    this.reloadList();
     this.stationFormGroup = this.formBuilder.group({
       addStationForm: this.formBuilder.group({
         x: [],
@@ -51,11 +55,12 @@ export class StationListComponent implements OnInit {
         console.log(res);
       }
     );
+    this.reloadList();
   }
 
   onReload() {
-    // router navigate always lead to root path
-    this.router.navigate(['stations'], {relativeTo: this.route});
+    //window.location.reload();
+    this.reloadList();
   }
 
   onDelete(targetId: number) {
@@ -70,5 +75,12 @@ export class StationListComponent implements OnInit {
                           {relativeTo: this.route, 
                            queryParams: {id: targetId}}
                         );
+  }
+
+  reloadCurrentRoute() {
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([currentUrl]);
+    });
   }
 }
