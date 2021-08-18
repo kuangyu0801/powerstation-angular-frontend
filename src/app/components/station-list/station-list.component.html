@@ -7,8 +7,9 @@
                     <th>x</th>
                     <th>y</th>
                     <th>reach</th>
+                    <th>id</th>
                     <th>link</th>
-                    <th>action</th>
+                    <th>actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -16,10 +17,21 @@
                     <td>{{station.x}}</td>
                     <td>{{station.y}} </td>
                     <td>{{station.reach}}</td>
+                    <th>{{station.id}}</th>
                     <td><a href={{station._links.self.href}}>Link</a></td>
                     <td>
-                        <button class="btn btn-info">Update</button>
-                        <button class="btn btn-info">Delete</button>
+                        <!-- using button instead of link to look neet
+                            <a [routerLink]="['/stations', 'update']"
+                                [queryParams]="{id: station.id}"
+                                >Update
+                            </a>
+                            <a [routerLink]="['/stations', 'delete']"
+                            [queryParams]="{id: station.id}"
+                                >Delete
+                            </a>
+                        -->
+                        <button class="btn btn-info" (click)="onUpdate(station.id)">Update</button>
+                        <button class="btn btn-info" (click)="onDelete(station.id)">Delete</button>
                     </td>
                 </tr>
             </tbody> 
@@ -50,4 +62,5 @@
             <button class="btn btn-info">Add new stations</button>
         </form>
     </div>
+    <button class="btn btn-info" (click)="onReload()">Reload page</button>
 </div>

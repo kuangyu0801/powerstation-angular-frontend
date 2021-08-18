@@ -8,9 +8,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { StationListComponent } from './components/station-list/station-list.component';
 
 import { Routes, RouterModule } from '@angular/router';
+import { StationDeleteComponent } from './components/station-delete/station-delete.component';
 
 const routes: Routes = [
   // specific to generic
+  {path: 'stations/delete', component: StationDeleteComponent},
   {path: 'stations', component: StationListComponent},
   {path: 'query', component: LinkqueryComponent},
   {path: '', redirectTo: '/stations', pathMatch: 'full'},
@@ -20,7 +22,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     LinkqueryComponent,
-    StationListComponent
+    StationListComponent,
+    StationDeleteComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

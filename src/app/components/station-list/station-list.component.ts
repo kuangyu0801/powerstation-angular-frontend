@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Station } from 'src/app/common/station';
 import { StationService } from 'src/app/services/station.service';
 
@@ -11,16 +12,23 @@ import { StationService } from 'src/app/services/station.service';
 export class StationListComponent implements OnInit {
   stationFormGroup!: FormGroup;
   stations: Station[] = [];
+  baseUrl: string = "http://localhost:8080/api/stations";
 
   // inject dependency of station service
   constructor(private formBuilder: FormBuilder,
-    private stationService: StationService) { }
+              private stationService: StationService,
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     // subscribe to data async
     this.stationService.getStationList().subscribe(
       data => {
         this.stations = data;
+        // preprocessing to get id from links
+        for (let station of this.stations) {
+            station.id = +station._links.self.href.substring(this.baseUrl.length + 1);
+        }
       }
     )
     this.stationFormGroup = this.formBuilder.group({
@@ -43,5 +51,24 @@ export class StationListComponent implements OnInit {
         console.log(res);
       }
     );
+  }
+
+  onReload() {
+    // router navigate always lead to root path
+    this.router.navigate(['stations'], {relativeTo: this.route});
+  }
+
+  onDelete(deletingId: number) {
+    this.router.navigate(['delete'], 
+                          {relativeTo: this.route, 
+                           queryParams: {id: deletingId}}
+                        );
+  }
+
+  onUpdate(deletingId: number) {
+    this.router.navigate(['update'], 
+                          {relativeTo: this.route, 
+                           queryParams: {id: deletingId}}
+                        );
   }
 }

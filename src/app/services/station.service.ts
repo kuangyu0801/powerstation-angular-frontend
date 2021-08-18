@@ -21,6 +21,10 @@ export class StationService {
   postStation(newStation : Station): Observable<Station> {
     return this.httpClient.post<Station>(this.baseUrl, newStation);
   }
+
+  deleteStation(id: number): Observable<any> {
+    return this.httpClient.delete(this.baseUrl + "/" + id);
+  }
 }
 
 interface GetResponse {
