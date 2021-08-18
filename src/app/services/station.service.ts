@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class StationService {
+
   private baseUrl = 'http://localhost:8080/api/stations';
     // inject http client
     constructor(private httpClient : HttpClient) { }
@@ -24,6 +25,10 @@ export class StationService {
 
   deleteStation(id: number): Observable<any> {
     return this.httpClient.delete(this.baseUrl + "/" + id);
+  }
+
+  updateStation(id: number, uStation: Station): Observable<any> {
+    return this.httpClient.put(this.baseUrl + "/" + id, uStation);
   }
 }
 

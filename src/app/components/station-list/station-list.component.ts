@@ -58,17 +58,17 @@ export class StationListComponent implements OnInit {
     this.router.navigate(['stations'], {relativeTo: this.route});
   }
 
-  onDelete(deletingId: number) {
+  onDelete(targetId: number) {
     this.router.navigate(['delete'], 
                           {relativeTo: this.route, 
-                           queryParams: {id: deletingId}}
+                           queryParams: {id: targetId}}
                         );
   }
 
-  onUpdate(deletingId: number) {
+  onUpdate(targetId: number) {
     this.router.navigate(['update'], 
                           {relativeTo: this.route, 
-                           queryParams: {id: deletingId}}
+                           queryParams: {id: targetId}}
                         );
   }
 }

@@ -9,10 +9,12 @@ import { StationListComponent } from './components/station-list/station-list.com
 
 import { Routes, RouterModule } from '@angular/router';
 import { StationDeleteComponent } from './components/station-delete/station-delete.component';
+import { StationUpdateComponent } from './components/station-update/station-update.component';
 
 const routes: Routes = [
   // specific to generic
   {path: 'stations/delete', component: StationDeleteComponent},
+  {path: 'stations/update', component: StationUpdateComponent},
   {path: 'stations', component: StationListComponent},
   {path: 'query', component: LinkqueryComponent},
   {path: '', redirectTo: '/stations', pathMatch: 'full'},
@@ -23,7 +25,8 @@ const routes: Routes = [
     AppComponent,
     LinkqueryComponent,
     StationListComponent,
-    StationDeleteComponent
+    StationDeleteComponent,
+    StationUpdateComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
