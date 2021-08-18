@@ -10,6 +10,7 @@ import { StationListComponent } from './components/station-list/station-list.com
 import { Routes, RouterModule } from '@angular/router';
 import { StationDeleteComponent } from './components/station-delete/station-delete.component';
 import { StationUpdateComponent } from './components/station-update/station-update.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   // specific to generic
@@ -17,8 +18,9 @@ const routes: Routes = [
   {path: 'stations/update', component: StationUpdateComponent},
   {path: 'stations', component: StationListComponent},
   {path: 'query', component: LinkqueryComponent},
-  {path: '', redirectTo: '/stations', pathMatch: 'full'},
-  {path: '**', redirectTo: '/stations', pathMatch: 'full'}
+  {path: 'home', component: HomeComponent},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ const routes: Routes = [
     LinkqueryComponent,
     StationListComponent,
     StationDeleteComponent,
-    StationUpdateComponent
+    StationUpdateComponent,
+    HomeComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

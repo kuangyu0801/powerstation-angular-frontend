@@ -1,4 +1,5 @@
-<h2>Station List</h2>
+<h2>Station List</h2>        
+<button class="btn btn-info" (click)="onReload()">Refresh</button>
 <div class="main-content page-m">
     <div class="container-fluid">
         <table class="table table-striped">
@@ -8,7 +9,6 @@
                     <th>y</th>
                     <th>reach</th>
                     <th>id</th>
-                    <th>link</th>
                     <th>actions</th>
                 </tr>
             </thead>
@@ -18,7 +18,6 @@
                     <td>{{station.y}} </td>
                     <td>{{station.reach}}</td>
                     <th>{{station.id}}</th>
-                    <td><a href={{station._links.self.href}}>Link</a></td>
                     <td>
                         <!-- using button instead of link to look neet
                             <a [routerLink]="['/stations', 'update']"
@@ -30,8 +29,9 @@
                                 >Delete
                             </a>
                         -->
-                        <button class="btn btn-info" (click)="onUpdate(station.id)">Update</button>
-                        <button class="btn btn-info" (click)="onDelete(station.id)">Delete</button>
+                        <a class="btn btn-outline-info btn-sm" href={{station._links.self.href}}>Get</a>
+                        <button class="btn btn-outline-info btn-sm" (click)="onUpdate(station.id)">Update</button>
+                        <button class="btn btn-outline-info btn-sm" (click)="onDelete(station.id)">Delete</button>
                     </td>
                 </tr>
             </tbody> 
@@ -59,8 +59,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn-info">Add new stations</button>
+            <button class="btn btn-info btn-sm">Add</button>
         </form>
     </div>
-    <button class="btn btn-info" (click)="onReload()">Refresh</button>
 </div>
