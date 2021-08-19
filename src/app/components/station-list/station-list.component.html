@@ -5,19 +5,21 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>x</th>
-                    <th>y</th>
-                    <th>reach</th>
-                    <th>id</th>
-                    <th>actions</th>
+                    <th>#</th>
+                    <th>X</th>
+                    <th>Y</th>
+                    <th>Reach</th>
+                    <th>ID</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let station of stations">
+                <tr *ngFor="let station of stations; index as i">
+                    <td>{{i + 1}}</td>
                     <td>{{station.x}}</td>
                     <td>{{station.y}} </td>
                     <td>{{station.reach}}</td>
-                    <th>{{station.id}}</th>
+                    <td>{{station.id}}</td>
                     <td>
                         <!-- using button instead of link to look neet
                             <a [routerLink]="['/stations', 'update']"
