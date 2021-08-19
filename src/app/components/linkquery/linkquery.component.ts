@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LinkQuery } from 'src/app/common/link-query';
 import { LinkQueryService } from 'src/app/services/link-query.service';
 import { LinkQueryResponse } from 'src/app/common/link-query-response';
@@ -19,8 +19,8 @@ export class LinkqueryComponent implements OnInit {
   ngOnInit(): void {
     this.linkQueryFormGroup = this.formBuilder.group({
       linkQueryForm: this.formBuilder.group({
-        x: [],
-        y: []
+        x: ['', Validators.required],
+        y: ['', Validators.required]
       })
     });
   }
@@ -46,7 +46,6 @@ export class LinkqueryComponent implements OnInit {
         } else {
           this.message = `No link station within reach for point (${this.response.xquery}, ${this.response.yquery})`;
         }
-        
       }
     );
   }

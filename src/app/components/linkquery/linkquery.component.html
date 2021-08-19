@@ -11,23 +11,31 @@
                     <div class="col-md-9">
                         <input formControlName="x" type="number">
                     </div>
+                    <span *ngIf="!linkQueryFormGroup.get('linkQueryForm')?.get('x')?.valid
+                    && linkQueryFormGroup.get('linkQueryForm')?.get('x')?.touched"
+                    class="help-block"> Please enter a number</span>
                 </div>
                 <div class="row">
                     <div class="col-md-2"><label>y</label></div>
                     <div class="col-md-9">
                         <input formControlName="y" type="number">
                     </div>
+                    <span *ngIf="!linkQueryFormGroup.get('linkQueryForm')?.get('x')?.valid
+                    && linkQueryFormGroup.get('linkQueryForm')?.get('y')?.touched"
+                    class="help-block"> Please enter a number</span>
                 </div>
             </div>
 
             <!-- submit button -->
             <div class="text-left">
-                <button type="submit" class="btn btn-info">Query</button>
+                <button type="submit" class="btn btn-info" [disabled]="!linkQueryFormGroup.valid">Query</button>
             </div>
         </form>
     </div>
     <div class="container-fluid">
-        <h6>Query Result:</h6>
-        <h6>{{message}}</h6>
+        <div class="row">
+            <div class="col-md-2"><h6>Query Result:</h6></div>
+            <div class="col-md-9"><h6>{{message}}</h6></div>
+        </div>
     </div>
 </div>

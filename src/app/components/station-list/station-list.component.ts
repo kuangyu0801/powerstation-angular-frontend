@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Station } from 'src/app/common/station';
 import { StationService } from 'src/app/services/station.service';
@@ -37,9 +37,9 @@ export class StationListComponent implements OnInit {
     this.reloadList();
     this.stationFormGroup = this.formBuilder.group({
       addStationForm: this.formBuilder.group({
-        x: [],
-        y: [],
-        reach: []
+        x: ['', Validators.required],
+        y: ['', Validators.required],
+        reach: ['', Validators.required]
       })
     });
   }

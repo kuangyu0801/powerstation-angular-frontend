@@ -40,6 +40,7 @@
         </table>
     </div>
     <div class="container-fluid">
+        <!-- property binding with angular reactive form--> 
         <form [formGroup]="stationFormGroup" (ngSubmit)="onSubmit()">
             <div formGroupName="addStationForm" class="form-area">
                 <div class="row">
@@ -47,21 +48,30 @@
                     <div class="col-md-9">
                         <input formControlName="x" type="number">
                     </div>
+                    <span *ngIf="!stationFormGroup.get('addStationForm')?.get('x')?.valid
+                    && stationFormGroup.get('addStationForm')?.get('x')?.touched"
+                    class="help-block"> Please enter a number</span>
                 </div>
                 <div class="row">
                     <div class="col-md-2"><label>y</label></div>
                     <div class="col-md-9">
                         <input formControlName="y" type="number">
                     </div>
+                    <span *ngIf="!stationFormGroup.get('addStationForm')?.get('y')?.valid
+                    && stationFormGroup.get('addStationForm')?.get('y')?.touched"
+                    class="help-block"> Please enter a number</span>
                 </div>
                 <div class="row">
                     <div class="col-md-2"><label>reach</label></div>
                     <div class="col-md-9">
                         <input formControlName="reach" type="number">
                     </div>
+                    <span *ngIf="!stationFormGroup.get('addStationForm')?.get('reach')?.valid
+                    && stationFormGroup.get('addStationForm')?.get('reach')?.touched"
+                    class="help-block"> Please enter a number</span>
                 </div>
             </div>
-            <button class="btn btn-info btn-sm">Add</button>
+            <button class="btn btn-info btn-sm" type="submit" [disabled]="!stationFormGroup.valid">Add</button>
         </form>
     </div>
 </div>
