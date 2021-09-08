@@ -12,8 +12,8 @@ import { StationService } from 'src/app/services/station.service';
 export class StationListComponent implements OnInit {
   stationFormGroup!: FormGroup;
   stations: Station[] = [];
-  baseUrl: string = "http://localhost:8080/api/stations";
-
+  baseUrl: string = "http://api/api/stations/";
+  redirectUrl: string = "http://localhost:4200/api/stations/";
   // inject dependency of station service
   constructor(private formBuilder: FormBuilder,
               private stationService: StationService,
@@ -27,8 +27,9 @@ export class StationListComponent implements OnInit {
           this.stations = data;
           // preprocessing to get id from links
           for (let station of this.stations) {
-              station.id = +station._links.self.href.substring(this.baseUrl.length + 1);
-          }
+              station.id = +station._links.self.href.substring(this.baseUrl.length);
+              station._links.self.href = this.redirectUrl + station.id;
+            }
         }
       );
   }

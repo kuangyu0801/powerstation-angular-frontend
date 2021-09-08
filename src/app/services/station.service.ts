@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 })
 export class StationService {
 
-  private baseUrl = 'http://localhost:8080/api/stations';
+  private baseUrl = 'http://localhost:4200/api/stations';
     // inject http client
     constructor(private httpClient : HttpClient) { }
   // TODO: 這個環節很重要, 查清楚每個component的意義與用法

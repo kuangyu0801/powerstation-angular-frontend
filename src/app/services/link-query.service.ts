@@ -9,7 +9,7 @@ import { LinkQueryResponse } from '../common/link-query-response';
 })
 export class LinkQueryService {
 
-  private queryUrl = 'http://localhost:8080/api/link-query/query';
+  private queryUrl = 'http://localhost:4200/api/link-query/query';
 
   constructor(private httpClient: HttpClient) { }
 
